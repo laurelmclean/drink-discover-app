@@ -1,0 +1,23 @@
+/* src/components/Favorites.css */
+.favorites-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.favorite-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+}
+
+.favorite-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}

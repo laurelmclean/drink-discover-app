@@ -1,20 +1,21 @@
 // src/components/CocktailList.js
 import React from 'react';
+import './CocktailList.css'; // Import your CSS file
 
 const CocktailList = ({ cocktails, pinFavorite }) => {
     return (
-        <div>
+        <div className="cocktail-list-container">
             <h2>Cocktail List</h2>
-            <ul>
+            <div className="cocktail-grid">
                 {cocktails.map((cocktail) => (
-                    <li key={cocktail.idDrink}>
+                    <div className="cocktail-item" key={cocktail.idDrink}>
                         <h3>{cocktail.strDrink}</h3>
                         <p>Category: {cocktail.strCategory}</p>
-                        <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} style={{ maxWidth: '100px' }} />
+                        <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} className="cocktail-image" />
                         <button onClick={() => pinFavorite(cocktail)}>Pin</button>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };

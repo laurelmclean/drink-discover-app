@@ -14,7 +14,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=d");
+        const response = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=t");
         dispatch(fetchCocktailsSuccess(response.data.drinks));
       } catch (error) {
         console.error('Error fetching cocktails:', error);

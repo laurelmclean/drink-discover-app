@@ -1,19 +1,20 @@
 // src/components/Favorites.js
 import React from 'react';
+import './Favorites.css'; // Import your CSS file
 
 const Favorites = ({ favorites }) => {
     return (
-        <div>
+        <div className="favorites-container">
             <h2>Favorites</h2>
-            <ul>
+            <div className="favorites-grid">
                 {favorites.map((cocktail) => (
-                    <li key={cocktail.idDrink}>
+                    <div className="favorite-item" key={cocktail.idDrink}>
                         <h3>{cocktail.strDrink}</h3>
                         <p>Category: {cocktail.strCategory}</p>
-                        <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} style={{ maxWidth: '100px' }} />
-                    </li>
+                        <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} className="favorite-image" />
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 };
