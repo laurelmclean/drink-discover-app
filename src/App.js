@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+// src/components/App.js
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCocktailsSuccess, pinFavorite } from './redux/actions';
+import CocktailList from './components/CocktailList';
+import Favorites from './components/Favorites';
+import axios from 'axios';
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  const cocktails = useSelector((state) => state.cocktails);
+  const favorites = useSelector((state) => state.favorites);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=d");
+        dispatch(fetchCocktailsSuccess(response.data.drinks));
+      } catch (error) {
+        console.error('Error fetching cocktails:', error);
+      }
+    };
+
+    fetchData();
+  }, [dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <CocktailList cocktails={cocktails} pinFavorite={(cocktail) => dispatch(pinFavorite(cocktail))} />
+      <Favorites favorites={favorites} />
     </div>
   );
-}
+};
 
 export default App;
