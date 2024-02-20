@@ -1,6 +1,6 @@
-// src/components/SearchBar.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import './SearchBar.css';
 
 const SearchBar = ({ fetchData }) => {
     const [searchValue, setSearchValue] = useState('');
@@ -37,20 +37,21 @@ const SearchBar = ({ fetchData }) => {
     };
 
     return (
-        <div>
-            <div>
+        <div className="search-bar-container">
+            <div className="input-container">
                 <input
                     type="text"
                     placeholder="Search by ingredient"
                     value={searchValue}
                     onChange={handleInputChange}
+                    className="input"
                 />
-                <button onClick={searchByDrinkName}>Search</button>
-                <button onClick={fetchRandomDrink}>Random Drink</button>
+                <button onClick={searchByDrinkName} className="button">Search</button>
+                <button onClick={fetchRandomDrink} className="button">Random Drink</button>
             </div>
-            <div style={{ marginBottom: '10px' }}>
+            <div className="alphabet-buttons">
                 {'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map((letter) => (
-                    <button key={letter} onClick={() => fetchDataByLetter(letter)}>
+                    <button key={letter} onClick={() => fetchDataByLetter(letter)} className="alphabet-button">
                         {letter}
                     </button>
                 ))}

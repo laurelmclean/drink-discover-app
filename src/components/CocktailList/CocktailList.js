@@ -1,6 +1,5 @@
-// src/components/CocktailList.js
 import React from 'react';
-import './CocktailList.css'; // Import your CSS file
+import './CocktailList.css';
 
 const CocktailList = ({ cocktails, pinFavorite }) => {
     return (
