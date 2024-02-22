@@ -1,14 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SearchBar.css';
+import { useDispatch } from 'react-redux';
+import { fetchCocktailsSuccess } from '../../redux/reducers';
 
-const SearchBar = ({ fetchData }) => {
+
+const SearchBar = () => {
+    const dispatch = useDispatch();
     const [searchValue, setSearchValue] = useState('');
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
+                dispatch(fetchCocktailsSuccess(response.data.drinks));
+            } catch (error) {
+                console.error('Error fetching cocktails:', error);
+            }
+        };
+
+        fetchData();
+    }, [dispatch]);
+
+    const handleSearch = (data) => {
+        dispatch(fetchCocktailsSuccess(data));
+    };
 
     const fetchDataByLetter = async (letter) => {
         try {
             const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
-            fetchData(response.data.drinks);
+            handleSearch(response.data.drinks);
         } catch (error) {
             console.error(`Error fetching cocktails for letter ${letter}:`, error);
         }
@@ -17,7 +38,7 @@ const SearchBar = ({ fetchData }) => {
     const searchByDrinkName = async () => {
         try {
             const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchValue}`);
-            fetchData(response.data.drinks);
+            handleSearch(response.data.drinks);
         } catch (error) {
             console.error(`Error searching by drink ${searchValue}:`, error);
         }
@@ -26,7 +47,7 @@ const SearchBar = ({ fetchData }) => {
     const fetchRandomDrink = async () => {
         try {
             const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php');
-            fetchData([response.data.drinks[0]]);
+            handleSearch([response.data.drinks[0]]);
         } catch (error) {
             console.error('Error fetching random drink:', error);
         }

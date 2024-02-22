@@ -9,7 +9,10 @@ const Favorites = () => {
     const favorites = useSelector((state) => state.favorites);
 
     const noFavoritesMarkup = <div className="favorites-container">
-        <h2>No Favorites</h2>
+        <h2>You haven't favorited any drinks yet!</h2>
+        <Link to={'/'}>
+            <h3>Browse</h3>
+        </Link>
     </div>
 
     const favoritesMarkup = (
@@ -25,7 +28,6 @@ const Favorites = () => {
                             <Link to={`/details/${cocktail.idDrink}`}>
                                 <h3>{cocktail.strDrink}</h3>
                             </Link>
-                            <p>Category: {cocktail.strCategory}</p>
                             <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} className="favorite-image" />
                             {/* Conditionally render based on whether it's in favorites */}
                             <button onClick={() => { isInFavorites ? dispatch(removeFavorite(cocktail)) : dispatch(pinFavorite(cocktail)) }}>

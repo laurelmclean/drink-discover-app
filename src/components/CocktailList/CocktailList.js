@@ -23,7 +23,6 @@ const CocktailList = () => {
                         <Link to={`/details/${cocktail.idDrink}`}>
                             <h3>{cocktail.strDrink}</h3>
                         </Link>
-                        <p>Category: {cocktail.strCategory}</p>
                         <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} className="cocktail-image" />
                         {/* Conditionally render based on whether it's in favorites */}
                         <button onClick={() => { isInFavorites ? dispatch(removeFavorite(cocktail)) : dispatch(pinFavorite(cocktail)) }}>
