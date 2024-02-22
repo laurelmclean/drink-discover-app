@@ -7,7 +7,7 @@ function Footer() {
     return (
         <div className='Footer'>
             <p>Laurel McLean - Webpage Design - Copyright {dateObj.getFullYear()}</p>
-            <p>Images and content sourced from Google</p>
+            <p>Cocktails and Images from <a href='https://www.thecocktaildb.com/' target='blank'>The Cocktail DB</a></p>
         </div>
     )
 };

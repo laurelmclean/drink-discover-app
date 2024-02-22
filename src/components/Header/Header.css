@@ -7,7 +7,7 @@
     align-items: baseline;
     padding: 0em;
     margin-bottom: 2em;
-    color: #041c36;
+    color: white;
     background-image: url("https://cocktailkingdom.com/cdn/shop/files/CK-SHOPIFY_HOMEPAGE-SLIDESHOW_1640x525_STR-BUS-BOT_V3.jpg?v=1706811539&width=3840");
 }
 
@@ -15,26 +15,24 @@
     font-size: 80px;
     line-height: 10px;
     padding-top: 40px;
-    text-shadow: 1px 1px 10px #FFECD1, 1px 1px 10px #FFECD1;
 }
 
 .Title-Subtitle {
     font-size: 30px;
     font-weight: 500;
-    color: #041c36;
-    text-shadow: 1px 1px 10px #FFECD1, 1px 1px 10px #FFECD1;
+    color: white;
 }
 
 .Title a {
     display: inline-block;
     padding: 0.5em 1em;
-    color: #041c36;
+    color: white;
     font-weight: bold;
     text-decoration: none;
 }
 
 .Title .nav-link-active {
-    color: #041c36;
+    color: white;
     border-bottom: 2px solid;
 }
 
@@ -43,7 +41,7 @@
 }
 
 .Title .nav-section {
-    background-color: #FFECD1;
+    background-color: black;
     margin: 2.7rem -9999rem 0rem;
     /* add back negative margin value */
     padding: 0.25rem 9999rem;

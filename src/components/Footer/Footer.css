@@ -1,6 +1,10 @@
 .Footer {
-    color: #FFECD1;
-    background-color: #041c36;
+    color: white;
+    background-color: black;
     padding: 1em;
     margin: -1em;
+}
+
+.Footer a {
+    color: white;
 }
