@@ -12,7 +12,6 @@ import HomePage from './components/HomePage';
 import rootReducer from './redux/reducers';
 import CocktailDetails from './components/CocktailDetails/CocktailDetails';
 
-// Create Redux store
 const store = createStore(rootReducer);
 
 const rootElement = document.getElementById('root');
@@ -24,7 +23,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="favorites" element={<Favorites />} />
+          <Route path="/favorites" element={<Favorites />} />
           <Route path="/details/:id" element={<CocktailDetails />} />
         </Route>
       </Routes>

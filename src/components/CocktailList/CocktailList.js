@@ -14,7 +14,7 @@ const CocktailList = ({ cocktails, pinFavorite }) => {
                         </Link>
                         <p>Category: {cocktail.strCategory}</p>
                         <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} className="cocktail-image" />
-                        <button onClick={() => pinFavorite(cocktail)}>Pin</button>
+                        <button onClick={() => pinFavorite(cocktail)}>Favourite</button>
                     </div>
                 ))}
             </div>

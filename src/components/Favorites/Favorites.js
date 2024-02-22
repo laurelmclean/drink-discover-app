@@ -1,7 +1,10 @@
 import React from 'react';
-import './Favorites.css'; 
+import { useSelector } from 'react-redux';
+import './Favorites.css';
 
-const Favorites = ({ favorites }) => {
+const Favorites = () => {
+    const favorites = useSelector((state) => state.favorites);
+
     return (
         <div className="favorites-container">
             <h2>Favorites</h2>

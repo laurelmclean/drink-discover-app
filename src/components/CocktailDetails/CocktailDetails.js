@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCocktailsSuccess } from '../../redux/reducers';
+import { fetchCocktailsSuccess, pinFavorite, removeFavorite } from '../../redux/reducers';
 
 const CocktailDetails = () => {
     const dispatch = useDispatch();
@@ -10,6 +10,7 @@ const CocktailDetails = () => {
     const [cocktailDetails, setCocktailDetails] = useState(null);
 
     const cocktails = useSelector((state) => state.cocktails);
+    const favorites = useSelector((state) => state.favorites);
 
     useEffect(() => {
         const fetchCocktailDetails = async () => {
@@ -24,7 +25,7 @@ const CocktailDetails = () => {
                 const data = await response.json();
                 const fetchedCocktail = data.drinks[0];
                 setCocktailDetails(fetchedCocktail);
-                
+
                 dispatch(fetchCocktailsSuccess([...cocktails, fetchedCocktail]));
             }
         };
@@ -49,6 +50,9 @@ const CocktailDetails = () => {
         }
     }
 
+    // Check if the current cocktail is in favorites
+    const isInFavorites = favorites.some((favCocktail) => favCocktail.idDrink === cocktailDetails.idDrink);
+
     return (
         <div>
             <h2>{cocktailDetails.strDrink}</h2>
@@ -66,6 +70,11 @@ const CocktailDetails = () => {
 
             <p>Glass Type: {cocktailDetails.strGlass}</p>
             <p>Instructions: {cocktailDetails.strInstructions}</p>
+
+            {/* Conditionally render based on whether it's in favorites */}
+            <button onClick={() => { isInFavorites ? dispatch(removeFavorite(cocktailDetails)) : dispatch(pinFavorite(cocktailDetails))}}>
+                {isInFavorites ? 'Unfavorite' : 'Favorite'}
+            </button>
         </div>
     );
 };

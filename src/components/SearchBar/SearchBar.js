@@ -41,7 +41,7 @@ const SearchBar = ({ fetchData }) => {
             <div className="input-container">
                 <input
                     type="text"
-                    placeholder="Search by ingredient"
+                    placeholder="Search by name"
                     value={searchValue}
                     onChange={handleInputChange}
                     className="input"

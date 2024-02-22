@@ -32,7 +32,6 @@ const HomePage = () => {
         <div>
             <SearchBar fetchData={handleSearch} />
             <CocktailList cocktails={cocktails} pinFavorite={(cocktail) => dispatch(pinFavorite(cocktail))} />
-            <Favorites favorites={favorites} />
         </div>
     );
 };

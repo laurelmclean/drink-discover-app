@@ -15,8 +15,11 @@ const cocktailsSlice = createSlice({
         pinFavorite: (state, action) => {
             state.favorites.push(action.payload);
         },
+        removeFavorite: (state, action) => {
+            state.favorites = state.favorites.filter(cocktail => cocktail.idDrink !== action.payload.idDrink);
+        },
     },
 });
 
-export const { fetchCocktailsSuccess, pinFavorite } = cocktailsSlice.actions;
+export const { fetchCocktailsSuccess, pinFavorite, removeFavorite } = cocktailsSlice.actions;
 export default cocktailsSlice.reducer;
