@@ -1,20 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCocktailsSuccess } from '../../redux/reducers';
 
 const CocktailDetails = () => {
+    const dispatch = useDispatch();
     const params = useParams();
     const { id } = params;
     const [cocktailDetails, setCocktailDetails] = useState(null);
 
+    const cocktails = useSelector((state) => state.cocktails);
+
     useEffect(() => {
         const fetchCocktailDetails = async () => {
-            const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
-            const data = await response.json();
-            setCocktailDetails(data.drinks[0]);
+            // Check if the cocktail details are already in the Redux state
+            const cachedCocktail = cocktails.find((cocktail) => cocktail.idDrink === id);
+
+            if (cachedCocktail) {
+                setCocktailDetails(cachedCocktail);
+            } else {
+                // If not, fetch from API
+                const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`);
+                const data = await response.json();
+                const fetchedCocktail = data.drinks[0];
+                setCocktailDetails(fetchedCocktail);
+                
+                dispatch(fetchCocktailsSuccess([...cocktails, fetchedCocktail]));
+            }
         };
 
         fetchCocktailDetails();
-    }, [id]);
+    }, [id, dispatch, cocktails]);
 
     if (!cocktailDetails) {
         return <div>Loading...</div>;

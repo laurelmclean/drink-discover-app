@@ -1,11 +1,8 @@
-// src/components/App.js
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCocktailsSuccess, pinFavorite } from '../redux/actions'
+import { fetchCocktailsSuccess, pinFavorite } from '../redux/reducers';
 import CocktailList from './CocktailList/CocktailList';
 import Favorites from './Favorites/Favorites';
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
 import SearchBar from './SearchBar/SearchBar';
 import axios from 'axios';
 

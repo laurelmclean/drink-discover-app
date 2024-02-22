@@ -1,26 +1,22 @@
-// src/redux/reducers.js
-import { FETCH_COCKTAILS_SUCCESS, PIN_FAVORITE } from './actions';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     cocktails: [],
     favorites: [],
 };
 
-const rootReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case FETCH_COCKTAILS_SUCCESS:
-            return {
-                ...state,
-                cocktails: action.payload,
-            };
-        case PIN_FAVORITE:
-            return {
-                ...state,
-                favorites: [...state.favorites, action.payload],
-            };
-        default:
-            return state;
-    }
-};
+const cocktailsSlice = createSlice({
+    name: 'cocktails',
+    initialState,
+    reducers: {
+        fetchCocktailsSuccess: (state, action) => {
+            state.cocktails = action.payload;
+        },
+        pinFavorite: (state, action) => {
+            state.favorites.push(action.payload);
+        },
+    },
+});
 
-export default rootReducer;
+export const { fetchCocktailsSuccess, pinFavorite } = cocktailsSlice.actions;
+export default cocktailsSlice.reducer;
