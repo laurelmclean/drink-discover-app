@@ -12,7 +12,7 @@ const CocktailList = () => {
 
     if (isLoading) {
         return <div>
-            <img width="200px" src="https://static.vecteezy.com/system/resources/previews/006/126/912/non_2x/celebrating-cocktail-glass-in-transparent-background-free-vector.jpg" /></div>;
+            <img width="100px" src="https://static.vecteezy.com/system/resources/previews/006/126/912/non_2x/celebrating-cocktail-glass-in-transparent-background-free-vector.jpg" /></div>;
     }
 
     return (
@@ -26,26 +26,24 @@ const CocktailList = () => {
                     return (
                         <div className="cocktail-item" key={cocktail.idDrink}>
                             <Link to={`/details/${cocktail.idDrink}`}>
-
-                                <h3>{cocktail.strDrink}</h3>
-
                                 <img
                                     src={cocktail.strDrinkThumb}
                                     alt={cocktail.strDrink}
                                     className="cocktail-image"
                                 />
+                                <h3>{cocktail.strDrink}</h3>
                             </Link>
-
-                            <button
-                                className="favorite-button"
+                            <i
+                                className={`fa ${isInFavorites ? 'fa-heart' : 'fa-heart-o'} fa-2x`}
+                                aria-hidden="true"
+                                style={{ color: isInFavorites ? 'red' : 'black',
+                                    cursor: 'pointer', }}
                                 onClick={() => {
                                     isInFavorites
                                         ? dispatch(removeFavorite(cocktail))
                                         : dispatch(pinFavorite(cocktail));
                                 }}
-                            >
-                                {isInFavorites ? "Unfavorite" : "Favorite"}
-                            </button>
+                            ></i>
                         </div>
                     );
                 })}
