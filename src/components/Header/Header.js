@@ -14,7 +14,7 @@ function Header() {
                         to='/'>Browse Drinks</NavLink>
                     <NavLink
                         className={({ isActive }) => isActive ? 'nav-link-active' : 'nav-link'}
-                        to='/favorites'>My Favourites</NavLink>
+                        to='/favorites'>My Favorites</NavLink>
 
                 </div>
             </header>

@@ -24,13 +24,15 @@ const Favorites = () => {
                     const isInFavorites = favorites.some((favCocktail) => favCocktail.idDrink === cocktail.idDrink);
 
                     return (
-                        <div className="favorite-item" key={cocktail.idDrink}>
+                        <div className="favorites-item" key={cocktail.idDrink}>
                             <Link to={`/details/${cocktail.idDrink}`}>
                                 <h3>{cocktail.strDrink}</h3>
+                            
+                            <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} className="favorites-image" />
                             </Link>
-                            <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} className="favorite-image" />
+                            
                             {/* Conditionally render based on whether it's in favorites */}
-                            <button onClick={() => { isInFavorites ? dispatch(removeFavorite(cocktail)) : dispatch(pinFavorite(cocktail)) }}>
+                            <button className="favorite-button" onClick={() => { isInFavorites ? dispatch(removeFavorite(cocktail)) : dispatch(pinFavorite(cocktail)) }}>
                                 {isInFavorites ? 'Unfavorite' : 'Favorite'}
                             </button>
                         </div>

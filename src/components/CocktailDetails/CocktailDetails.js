@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCocktailsSuccess, pinFavorite, removeFavorite } from '../../redux/reducers';
+import './CocktailDetails.css';
 
 const CocktailDetails = () => {
     const dispatch = useDispatch();
@@ -54,27 +55,27 @@ const CocktailDetails = () => {
     const isInFavorites = favorites.some((favCocktail) => favCocktail.idDrink === cocktailDetails.idDrink);
 
     return (
-        <div>
-            <h2>{cocktailDetails.strDrink}</h2>
-            <p>Category: {cocktailDetails.strCategory}</p>
-            <img src={cocktailDetails.strDrinkThumb} alt={cocktailDetails.strDrink} />
-
-            <div>
-                <p>Ingredients:</p>
-                <ul>
-                    {ingredients.map((ingredient, index) => (
-                        <li key={index}>{`${measures[index]} ${ingredient}`}</li>
-                    ))}
-                </ul>
+        <div className="cocktail-container">
+            <div className="text-container">
+                <h2>{cocktailDetails.strDrink}</h2>
+                <p>Category: {cocktailDetails.strCategory}</p>
+                <div>
+                    <p>Ingredients:</p>
+                    <ul>
+                        {ingredients.map((ingredient, index) => (
+                            <li key={index}>{`${measures[index]} ${ingredient}`}</li>
+                        ))}
+                    </ul>
+                </div>
+                <p>Glass Type: {cocktailDetails.strGlass}</p>
+                <p>Instructions: {cocktailDetails.strInstructions}</p>
+                <button className="favorite-button" onClick={() => { isInFavorites ? dispatch(removeFavorite(cocktailDetails)) : dispatch(pinFavorite(cocktailDetails)) }}>
+                    {isInFavorites ? 'Unfavorite' : 'Favorite'}
+                </button>
             </div>
-
-            <p>Glass Type: {cocktailDetails.strGlass}</p>
-            <p>Instructions: {cocktailDetails.strInstructions}</p>
-
-            {/* Conditionally render based on whether it's in favorites */}
-            <button onClick={() => { isInFavorites ? dispatch(removeFavorite(cocktailDetails)) : dispatch(pinFavorite(cocktailDetails))}}>
-                {isInFavorites ? 'Unfavorite' : 'Favorite'}
-            </button>
+            <div className="image-container">
+                <img src={cocktailDetails.strDrinkThumb} alt={cocktailDetails.strDrink} />
+            </div>
         </div>
     );
 };

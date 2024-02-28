@@ -1,8 +1,8 @@
 .Footer {
+    width: 100%;
     color: white;
     background-color: black;
     padding: 1em;
-    margin: -1em;
 }
 
 .Footer a {

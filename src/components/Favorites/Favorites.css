@@ -1,22 +1,55 @@
 .favorites-container {
-    max-width: 800px;
     margin: 0 auto;
+    position: relative;
 }
 
 .favorites-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 20px;
 }
 
-.favorite-item {
-    border: 1px solid #ddd;
-    padding: 15px;
-    text-align: center;
+/* Smaller screens and tablets */
+/* number of columns is changed to two equal columns when the screen is 960px or smaller. */
+@media only screen and (max-width: 960px) {
+    .favorites-grid {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
-.favorite-image {
+/* Small screens mobile */
+@media only screen and (max-width: 700px) {
+    .favorites-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.favorites-item {
+    position: relative;
+    text-align: center;
+    padding: 10px;
+}
+
+.favorites-image {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
+}
+
+.favorites-item h3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-weight: lighter;
+    font-size: 20px;
+    text-shadow: 1px 1px 5px #041c36, 1px 1px 5px #041c36;
+    margin: 0;
+    padding: 10px;
+}
+
+.favorites-item a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
