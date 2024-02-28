@@ -8,6 +8,12 @@ const CocktailList = () => {
     const dispatch = useDispatch();
     const cocktails = useSelector((state) => state.cocktails);
     const favorites = useSelector((state) => state.favorites);
+    const isLoading = useSelector((state) => state.isLoading);
+
+    if (isLoading) {
+        return <div>
+            <img width="200px" src="https://static.vecteezy.com/system/resources/previews/006/126/912/non_2x/celebrating-cocktail-glass-in-transparent-background-free-vector.jpg" /></div>;
+    }
 
     return (
         <div className="cocktail-list-container">

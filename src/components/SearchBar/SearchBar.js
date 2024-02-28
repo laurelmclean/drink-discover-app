@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './SearchBar.css';
-import { useDispatch } from 'react-redux';
-import { fetchCocktailsSuccess } from '../../redux/reducers';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCocktailsStart, fetchCocktailsSuccess } from '../../redux/reducers';
 
 const SearchBar = () => {
     const dispatch = useDispatch();
+    const isLoading = useSelector((state) => state.isLoading);
     const [searchValue, setSearchValue] = useState('');
     const [displaySearchTerm, setDisplaySearchTerm] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                dispatch(fetchCocktailsStart());
                 const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
                 dispatch(fetchCocktailsSuccess(response.data.drinks));
                 setDisplaySearchTerm('');
@@ -23,12 +25,14 @@ const SearchBar = () => {
         fetchData();
     }, [dispatch]);
 
-    const handleSearch = (data, term) => {
+    const handleSearch = (data) => {
+        dispatch(fetchCocktailsStart());
         dispatch(fetchCocktailsSuccess(data));
     };
 
     const fetchDataByLetter = async (letter) => {
         try {
+            dispatch(fetchCocktailsStart());
             const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
             handleSearch(response.data.drinks, `letter ${letter}`);
             setDisplaySearchTerm('');
@@ -39,6 +43,7 @@ const SearchBar = () => {
 
     const searchByDrinkName = async () => {
         try {
+            dispatch(fetchCocktailsStart());
             const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchValue}`);
             handleSearch(response.data.drinks, `drink "${searchValue}"`);
             setSearchValue('');
