@@ -5,7 +5,7 @@ import SearchBar from './SearchBar/SearchBar';
 const HomePage = () => {
 
     return (
-        <div>
+        <div className='wrapper'>
             <SearchBar />
             <CocktailList />
         </div>

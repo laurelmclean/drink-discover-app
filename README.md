@@ -27,7 +27,7 @@ Drink Discover is a React and Redux-based web application that allows users to b
    - Use the search bar to find specific drinks by name.
 
 3. **Discover Random Drink:**
-   - Click the "Discover" button for a random drink suggestion.
+   - Click the "Random Drink" button for a random drink suggestion.
 
 4. **Favorites:**
    - Mark a drink as a favorite by clicking the "Favorite" button.
