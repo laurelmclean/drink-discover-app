@@ -7,7 +7,7 @@ function Header() {
         <div className='Title'>
             <header>
                 <h1>Drink Discover</h1>
-                <div className='Title-Subtitle'>Discover your new favourite cocktail!</div>
+                <div className='Title-Subtitle'>Discover your new favorite cocktail!</div>
                 <div className='nav-section'>
                     <NavLink
                         className={({ isActive }) => isActive ? 'nav-link-active' : 'nav-link'}

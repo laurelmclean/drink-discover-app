@@ -7,20 +7,22 @@
     gap: 10px;
     align-items: baseline;
     padding: 0em;
-    margin-bottom: 4em;
+    margin-bottom: 2em;
     color: white;
     background-image: url("https://cocktailkingdom.com/cdn/shop/files/CK-SHOPIFY_HOMEPAGE-SLIDESHOW_1640x525_STR-BUS-BOT_V3.jpg?v=1706811539&width=3840");
 }
 
 .Title h1 {
     font-size: 80px;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .Title-Subtitle {
     font-size: 30px;
     font-weight: 500;
     color: white;
-    padding-top: 0px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .Title a {
@@ -32,8 +34,10 @@
 }
 
 .Title .nav-link-active {
-    color: white;
-    border-bottom: 2px solid;
+    color: black;
+    background-color: white;
+    padding: 8px 12px;
+    border-radius: 10px;
 }
 
 .nav-link {
@@ -55,10 +59,12 @@
 
     .Title h1 {
         font-size: 40px;
+        margin-bottom: 1em;
     }
 
     .Title-Subtitle {
         font-size: 20px;
+        margin-bottom: 1em;
     }
 
     .Title .nav-section {

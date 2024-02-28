@@ -8,12 +8,16 @@ const Favorites = () => {
     const dispatch = useDispatch();
     const favorites = useSelector((state) => state.favorites);
 
-    const noFavoritesMarkup = <div className="favorites-container">
-        <h2>You haven't favorited any drinks yet!</h2>
-        <Link to={'/'}>
-            <h3>Browse</h3>
-        </Link>
-    </div>
+    const noFavoritesMarkup = (
+        <div className="favorites-container">
+            <h2>Looks like your cocktail cabinet is feeling a bit lonely!</h2>
+            <p>Why not explore some amazing drinks and find your new favorite?</p>
+            <Link to={'/'}>
+                <h3 className='favourite-browse'>Let's Browse!</h3>
+            </Link>
+        </div>
+    );
+
 
     const favoritesMarkup = (
         <div className="favorites-container">

@@ -4,16 +4,17 @@ import './SearchBar.css';
 import { useDispatch } from 'react-redux';
 import { fetchCocktailsSuccess } from '../../redux/reducers';
 
-
 const SearchBar = () => {
     const dispatch = useDispatch();
     const [searchValue, setSearchValue] = useState('');
+    const [displaySearchTerm, setDisplaySearchTerm] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a');
                 dispatch(fetchCocktailsSuccess(response.data.drinks));
+                setDisplaySearchTerm('');
             } catch (error) {
                 console.error('Error fetching cocktails:', error);
             }
@@ -22,14 +23,15 @@ const SearchBar = () => {
         fetchData();
     }, [dispatch]);
 
-    const handleSearch = (data) => {
+    const handleSearch = (data, term) => {
         dispatch(fetchCocktailsSuccess(data));
     };
 
     const fetchDataByLetter = async (letter) => {
         try {
             const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`);
-            handleSearch(response.data.drinks);
+            handleSearch(response.data.drinks, `letter ${letter}`);
+            setDisplaySearchTerm('');
         } catch (error) {
             console.error(`Error fetching cocktails for letter ${letter}:`, error);
         }
@@ -38,7 +40,9 @@ const SearchBar = () => {
     const searchByDrinkName = async () => {
         try {
             const response = await axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchValue}`);
-            handleSearch(response.data.drinks);
+            handleSearch(response.data.drinks, `drink "${searchValue}"`);
+            setSearchValue('');
+            setDisplaySearchTerm(searchValue);
         } catch (error) {
             console.error(`Error searching by drink ${searchValue}:`, error);
         }
@@ -47,7 +51,8 @@ const SearchBar = () => {
     const fetchRandomDrink = async () => {
         try {
             const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php');
-            handleSearch([response.data.drinks[0]]);
+            handleSearch([response.data.drinks[0]], 'random drink');
+            setDisplaySearchTerm('');
         } catch (error) {
             console.error('Error fetching random drink:', error);
         }
@@ -76,6 +81,9 @@ const SearchBar = () => {
                         {letter}
                     </button>
                 ))}
+            </div>
+            <div className="result-message">
+                {displaySearchTerm && `Displaying search results for ${displaySearchTerm}`}
             </div>
         </div>
     );

@@ -11,7 +11,6 @@ const CocktailList = () => {
 
     return (
         <div className="cocktail-list-container">
-            <h2>Browse Drinks</h2>
             <div className="cocktail-grid">
                 {cocktails.map((cocktail) => {
                     const isInFavorites = favorites.some(
