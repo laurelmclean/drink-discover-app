@@ -49,7 +49,7 @@ const CocktailList = () => {
                   } fa-2x`}
                   aria-hidden="true"
                   style={{
-                    color: isInFavorites ? "black" : "black",
+                    color: isInFavorites ? "black" : "",
                     cursor: "pointer",
                   }}
                   onClick={() => {

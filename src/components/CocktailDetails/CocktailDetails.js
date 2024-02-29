@@ -73,7 +73,7 @@ const CocktailDetails = () => {
             className={`fa ${isInFavorites ? "fa-heart" : "fa-heart-o"} fa-2x`}
             aria-hidden="true"
             style={{
-              color: isInFavorites ? "black" : "black",
+              color: isInFavorites ? "black" : "",
               cursor: "pointer",
             }}
             onClick={() => {
