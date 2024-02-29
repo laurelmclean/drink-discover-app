@@ -2,6 +2,8 @@
 
 Drink Discover is a React and Redux-based web application that allows users to browse a variety of drinks, search for specific ones, and discover random drinks. Users can view details of each drink, including ingredients and instructions on how to make them. Additionally, the application supports a favorites feature, allowing users to save their preferred drinks for quick access.
 
+[Check it out on GitHub pages!](https://laurelmclean.github.io/drink-discover-app/)
+
 ## Features
 
 - **Browse Drinks**: Explore a diverse selection of drinks by name.
@@ -34,3 +36,19 @@ Drink Discover is a React and Redux-based web application that allows users to b
    - View and manage your favorite drinks on the favorites page.
 
 ## Screenshots
+
+### Home
+
+![Home](home.png)
+
+### Search
+
+![Search](search.png)
+
+### Details
+
+![Details](details.png)
+
+### Favorites
+
+![Favorites](favorites.png)

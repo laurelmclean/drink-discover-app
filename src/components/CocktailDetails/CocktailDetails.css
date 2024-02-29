@@ -3,10 +3,11 @@
     align-items: center;
     justify-content: space-between;
     margin: 0em 4em;
+
 }
 
 .cocktail-container h2 {
-    font-size: 3em;
+    font-size: 2em;
     margin-bottom: 1rem;
 }
 
