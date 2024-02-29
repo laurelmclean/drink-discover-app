@@ -70,6 +70,7 @@
 
 .alphabet-buttons {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin-top: 10px;
 }
@@ -97,6 +98,11 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     will-change: transform;
+    
+    @media (max-width: 767px) {
+            flex-basis: 10%;
+            margin: 5px;
+        }
 }
 
 .alphabet-button:hover {
@@ -114,4 +120,21 @@
 .result-message {
  padding-top: 15px;
  font-size: 2em;
+}
+
+/* Media query for small screens */
+@media (max-width: 700px) {
+    .search-bar-container {
+        margin-bottom: 10px;
+    }
+
+    .input-container {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: none;
+    }
+
+    .input {
+        min-width: auto;
+    }
 }

@@ -9,3 +9,11 @@
 .Footer a {
     color: white;
 }
+
+/* Media query for small screens */
+@media (max-width: 700px) {
+    .Footer {
+        text-align: center;
+        font-size: 10px;;
+    }
+}
