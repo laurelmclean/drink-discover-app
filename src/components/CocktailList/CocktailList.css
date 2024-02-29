@@ -37,8 +37,7 @@
 }
 
 .cocktail-item h3 {
-    font-weight: lighter;
-    font-size: 20px;
+    font-size: 30px;
     margin: 0;
     padding: 10px;
 }
@@ -47,4 +46,16 @@
     color: black;
     text-decoration: none;
     font-weight: bold;
+}
+
+.cocktail-item a:hover {
+    text-decoration: underline;
+}
+
+.name-and-heart {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }

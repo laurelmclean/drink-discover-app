@@ -2,10 +2,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0em 4em;
 }
 
 .cocktail-container h2 {
     font-size: 3em;
+    margin-bottom: 1rem;
 }
 
 .text-container {
@@ -28,4 +30,12 @@ ul {
 
 li {
     margin-bottom: 8px;
+}
+
+.details-name-and-heart {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    gap: 40px;
 }
