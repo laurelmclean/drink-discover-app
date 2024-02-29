@@ -3,12 +3,16 @@ import axios from 'axios';
 import './SearchBar.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCocktailsStart, fetchCocktailsSuccess } from '../../redux/reducers';
+import { useNavigate } from 'react-router-dom';
+
 
 const SearchBar = () => {
     const dispatch = useDispatch();
     const isLoading = useSelector((state) => state.isLoading);
     const [searchValue, setSearchValue] = useState('');
     const [displaySearchTerm, setDisplaySearchTerm] = useState('');
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,6 +61,10 @@ const SearchBar = () => {
         try {
             const response = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php');
             handleSearch([response.data.drinks[0]], 'random drink');
+            const randomDrinkId = response.data.drinks[0].idDrink;
+
+            // Navigate to the details page
+            navigate(`/details/${randomDrinkId}`);
             setDisplaySearchTerm('');
         } catch (error) {
             console.error('Error fetching random drink:', error);
