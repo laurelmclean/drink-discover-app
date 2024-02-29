@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/drink-discover-app/static/css/main.2e31efaa.css",
+    "main.js": "/drink-discover-app/static/js/main.c9d6c86f.js",
+    "static/js/453.2fdb152b.chunk.js": "/drink-discover-app/static/js/453.2fdb152b.chunk.js",
+    "index.html": "/drink-discover-app/index.html",
+    "main.2e31efaa.css.map": "/drink-discover-app/static/css/main.2e31efaa.css.map",
+    "main.c9d6c86f.js.map": "/drink-discover-app/static/js/main.c9d6c86f.js.map",
+    "453.2fdb152b.chunk.js.map": "/drink-discover-app/static/js/453.2fdb152b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e31efaa.css",
+    "static/js/main.c9d6c86f.js"
+  ]
+}
